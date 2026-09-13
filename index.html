@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Shower Enzo</title>
+    
+    <!-- Agregué la fuente 'Fredoka' para un toque más infantil y tierno -->
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Cinzel:wght@600;700&family=Fredoka:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- ESTILOS GLOBALES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-color: #fdfbf5; /* Crema vintage */
+            --text-dark: #6e4b33; /* Café oscuro */
+            --gold-accent: #c2a153; /* Dorado */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            display: flex;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+
+        /* --- PANTALLA DE BIENVENIDA (PORTADA) --- */
+        .pantalla-bienvenida {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-image: url('fondo.jpg'); 
+            background-color: var(--bg-color);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly; 
+            align-items: center;
+            padding: 5vh 0;
+            z-index: 9999;
+            transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
+        }
+
+        /* Título BABY SHOWER de la Portada (Nueva Letra) */
+        .titulo-imponente {
+            font-family: 'Fredoka', sans-serif; /* Cambiado a Fredoka */
+            font-size: clamp(3.5rem, 14vw, 5rem); 
+            font-weight: 600;
+            color: var(--text-dark);
+            line-height: 1.1;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(255,255,255,0.8); 
+            margin-bottom: 5px;
+        }
+
+        .nombre-portada {
+            font-family: 'Chewy', cursive;
+            font-size: clamp(5rem, 20vw, 7rem); 
+            color: var(--gold-accent); 
+            letter-spacing: 3px;
+            min-height: 1.2em; 
+            text-align: center;
+        }
+
+        .img-interactiva {
+            width: 80%;
+            max-width: 250px; 
+            cursor: pointer;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
+            animation: latido-suave 2s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+
+        .img-interactiva:hover {
+            transform: scale(1.1);
+        }
+
+        .texto-click {
+            font-family: 'Cinzel', serif;
+            font-size: 0.85rem;
+            color: var(--text-dark);
+            background: rgba(253, 251, 245, 0.85); 
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            animation: aparecer-desaparecer 2s infinite;
+        }
+
+        /* --- CONTENEDOR PRINCIPAL Y FONDO ANIMADO --- */
+        .container {
+            width: 100%;
+            max-width: 480px;
+            background-color: var(--bg-color);
+            background-image: url('fondo4.jpg'); 
+            background-repeat: repeat;
+            background-size: 300px; 
+            animation: movimientoFondo 25s linear infinite; 
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 100vh;
+        }
+
+        @keyframes movimientoFondo {
+            0% { background-position: 0 0; }
+            100% { background-position: 300px 300px; } 
+        }
+
+        /* --- EFECTO DE ESCRITURA MÁGICA PARA "ENZO" --- */
+        .letra-animada {
+            display: inline-block;
+            opacity: 0; 
+            animation: aparecerMagico 0.6s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes aparecerMagico {
+            0% { 
+                opacity: 0; 
+                transform: scale(0.3) translateY(20px) rotate(-15deg); 
+                filter: blur(4px); 
+                color: #ffffff; 
+                text-shadow: 0 0 20px var(--gold-accent); 
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.15) translateY(-5px) rotate(5deg); 
+                filter: blur(0px); 
+                color: var(--gold-accent);
+                text-shadow: 0 0 10px #ffffff; 
+            }
+            100% { 
+                opacity: 1; 
+                transform: scale(1) translateY(0) rotate(0deg); 
+                text-shadow: 2px 2px 0px rgba(110, 75, 51, 0.3); 
+            }
+        }
+
+        /* Lluvia mágica de hojas y abejas */
+        .particula-magica {
+            position: fixed;
+            top: -10vh;
+            z-index: 5; 
+            user-select: none;
+            pointer-events: none;
+            animation: caer linear forwards;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        }
+
+        @keyframes caer {
+            0% { transform: translateY(0) rotate(0deg) translateX(0px); }
+            50% { transform: translateY(55vh) rotate(180deg) translateX(25px); } 
+            100% { transform: translateY(110vh) rotate(360deg) translateX(-25px); }
+        }
+
+        .efecto-flotar { animation: flotar 4s infinite alternate ease-in-out; }
+        .efecto-respirar { animation: respirar 5s infinite alternate ease-in-out; }
+
+        .contenedor-foto-arco {
+            width: 90%;
+            margin: 30px auto;
+            border-radius: 150px 150px 0 0; 
+            border: 4px solid var(--gold-accent);
+            overflow: hidden; 
+            position: relative;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            aspect-ratio: 3/4;
+        }
+
+        .efecto-zoom-continuo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            animation: zoom-lento 12s infinite alternate linear;
+        }
+
+        @keyframes latido-suave {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05) translateY(-5px); }
+        }
+        @keyframes flotar {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+        @keyframes respirar {
+            0% { transform: scale(0.95); }
+            100% { transform: scale(1.03); }
+        }
+        @keyframes zoom-lento {
+            100% { transform: scale(1.15); }
+        }
+        @keyframes aparecer-desaparecer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* --- ELEMENTOS DE TEXTO --- */
+        .titulo-seccion {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-accent);
+            font-size: 1.8rem;
+            margin: 40px 0 20px 0;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+        }
+
+        p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-weight: 600;
+            background: rgba(253, 251, 245, 0.7);
+            border-radius: 10px;
+            padding: 5px;
+        }
+
+        /* --- ECOGRAFÍA FLOTANTE --- */
+        .foto-eco {
+            width: 100px;
+            position: absolute;
+            bottom: -15px;
+            left: -10px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: rotate(-10deg);
+            z-index: 10;
+            animation: flotar-rotando 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes flotar-rotando {
+            0% { transform: rotate(-10deg) translateY(0); }
+            100% { transform: rotate(-10deg) translateY(-10px); }
+        }
+
+        /* --- CUENTA REGRESIVA --- */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            background: rgba(253, 251, 245, 0.9);
+            padding: 20px 10px;
+            border-radius: 20px;
+            border: 1px dashed var(--gold-accent);
+        }
+        .time-box span { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); }
+        .time-box p { font-size: 0.6rem; margin: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-accent); }
+
+        /* --- BOTONES --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            text-decoration: none;
+            padding: 15px 30px;
+            border: 1px solid var(--gold-accent);
+            border-radius: 30px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: var(--gold-accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* --- BOTÓN PRIMARIO (DESTACADO PARA WHATSAPP) --- */
+        .btn-primario {
+            display: inline-block;
+            background-color: var(--gold-accent);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 35px;
+            border: 2px solid #ffffff;
+            border-radius: 35px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 15px rgba(194, 161, 83, 0.5);
+            animation: respirar 3s infinite ease-in-out;
+            transition: all 0.3s ease;
+        }
+        .btn-primario:hover {
+            background-color: var(--text-dark);
+            color: var(--gold-accent);
+            border-color: var(--gold-accent);
+            transform: scale(1.05);
+        }
+
+        /* --- REPRODUCTOR --- */
+        .play-btn {
+            background: var(--text-dark);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 20px auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="pantallaBienvenida" class="pantalla-bienvenida">
+        <!-- Textos agrupados para aprovechar el espacio en pantalla -->
+        <div>
+            <div class="titulo-imponente">MI<br>BABY<br>SHOWER</div>
+            <div class="nombre-portada" id="nombrePortada"></div>
+        </div>
+        
+        <img src="carta.png" alt="Abrir Invitación" class="img-interactiva" onclick="abrirInvitacion()">
+        
+        <div class="texto-click">DALE CLIC A LA IMAGEN PARA ABRIR</div>
+    </div>
+
+    <div class="container">
+        
+        <audio id="musicaFondo" loop>
+            <source src="musica.mpeg" type="audio/mpeg">
+        </audio>
+        
+        <button class="play-btn" onclick="togglePlay()" id="btnMusica">||</button>
+
+        <!-- Título BABY SHOWER de la página interior (Nueva Letra) -->
+        <h1 style="font-family: 'Fredoka', sans-serif; font-size: 2.5rem; margin-top: 10px;">MI BABY SHOWER</h1>
+        
+        <!-- Contenedor del nombre en la página Interior -->
+        <div id="nombreInterior" style="font-family: 'Chewy', cursive; font-size: 4rem; color: var(--gold-accent); margin-bottom: 20px; letter-spacing: 3px; min-height: 1.2em;">
+            <!-- Aquí el JS inyectará las letras animadas -->
+        </div>
+
+        <img src="poo.png" alt="Pooh y Tigger" class="efecto-respirar" style="width: 80%; max-width: 250px; margin: 0 auto 20px auto; display: block;">
+
+        <p>¡Esperamos a Enzo con mucho amor!</p>
+        <p style="font-weight: 300;">Con mucha ilusión te invitamos a celebrar la próxima llegada de Enzo, nos gustaria que estén en la primera fiestita que haremos en su honor para darle la bienvenida al mundo, un pequeño que ya llena nuestros corazones de amor.</p>
+
+        <div class="titulo-seccion">Mis papis:</div>
+        <p>ANDRES QUISPE VALDEZ<br>&<br>ANALI ESTEFANI HUAMANI AUCCAPURI</p>
+
+        <div style="position: relative; width: 100%; display: flex; justify-content: center;">
+            <div class="contenedor-foto-arco">
+                <img src="papas1.jpeg" alt="Papás" class="efecto-zoom-continuo">
+            </div>
+            <img src="ecografia.jpeg" alt="Ecografía" class="foto-eco">
+        </div>
+
+        <div class="titulo-seccion">Mis padrinos:</div>
+        <p>PAUL SEGURA DELGADO<br>&<br>KEYLA DANITZA MOZO BARRANTES</p>
+
+        <div class="titulo-seccion">Acompáñanos el día:</div>
+        <p style="font-size: 1.3rem;">SÁBADO <span style="font-size: 2.5rem; color: var(--gold-accent); margin: 0 10px;">10</span> OCTUBRE<br>2026</p>
+
+        <div class="countdown">
+            <div class="time-box"><span id="dias">00</span><p>Días</p></div>
+            <div class="time-box"><span>:</span></div>
+            <div class="time-box"><span id="horas">00</span><p>Horas</p></div>
+            <div class="time-box"><span>:</span></div>
+            <div class="time-box"><span id="minutos">00</span><p>Minutos</p></div>
+            <div class="time-box"><span>:</span></div>
+            <div class="time-box"><span id="segundos">00</span><p>Segundos</p></div>
+        </div>
+
+        <div class="titulo-seccion">Lugar</div>
+        <p>Salón de Eventos Bananos</p>
+        <p>Calle Francisco Sivirichi 205, Urb. Magisterio - Wanchaq, Cusco</p>
+        <p>HORA: 5:00 PM</p>
+        <a href="https://www.google.com/maps?q=-13.5228284,-71.9482981&z=17&hl=es" target="_blank" class="btn">VER UBICACIÓN</a>
+
+        <div class="titulo-seccion">BABY LIST</div>
+        <p style="font-weight: 300;">Tu presencia en este día tan especial es el mejor regalo.
+Sin embargo, si deseas contribuir de otra manera, agradecemos cualquier donativo que nos permita equipar nuestro hogar para la llegada de Enzo.
+Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalos de referencia.</p>
+        <a href="https://onelist.pe/listas/398lsn6rpgxhzhbw/invitado/" target="_blank" class="btn">VER LISTA DE REGALOS</a>
+
+        <!-- SECCIÓN DE CONFIRMACIÓN DE ASISTENCIA REUBICADA AL FINAL -->
+        <div class="titulo-seccion" style="font-family: 'Chewy', cursive; font-size: 3rem; text-transform: none; margin-top: 60px;">Confirmar Asistencia</div>
+        <img src="whatsapp.png" alt="WhatsApp" class="efecto-flotar" style="width: 60px; margin: 10px auto; display: block;">
+        <p style="font-weight: 300;">Nos encantará saber que nos acompañarás, permítenos preparar los detalles confirmando tu asistencia.</p>
+        
+        <!-- ÚNICO BOTÓN PRIMARIO DE CONFIRMACIÓN -->
+        <a href="https://wa.me/51977559267?text=Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Enzo.%20%C2%A1Qu%C3%A9%20emoci%C3%B3n%20acompa%C3%B1arlos!" target="_blank" class="btn-primario">✅ CONFIRMAR ASISTENCIA</a>
+
+        <!-- CIERRE DE LA INVITACIÓN -->
+        <div style="font-family: 'Chewy', cursive; font-size: 3.5rem; margin-top: 30px; margin-bottom: 40px; color: var(--gold-accent);">¡Te esperamos!</div>
+
+    </div>
+
+    <script>
+        var audio = document.getElementById("musicaFondo");
+        var isPlaying = false;
+        var btnPlay = document.getElementById("btnMusica");
+        const nombreDelBebe = "ENZO";
+
+        // --- FUNCIÓN PARA EL EFECTO MÁGICO DE LETRAS ---
+        function animarTextoMagico(idElemento, texto, delayExtra = 0) {
+            const contenedor = document.getElementById(idElemento);
+            contenedor.innerHTML = ""; 
+            
+            for (let i = 0; i < texto.length; i++) {
+                let span = document.createElement("span");
+                span.innerText = texto[i];
+                span.className = "letra-animada";
+                span.style.animationDelay = (delayExtra + (i * 0.15)) + "s";
+                contenedor.appendChild(span);
+            }
+        }
+
+        // Ejecutar en la portada apenas carga la página
+        window.onload = function() {
+            animarTextoMagico("nombrePortada", nombreDelBebe, 0.3);
+        };
+
+        // --- 1. ABRIR INVITACIÓN ---
+        function abrirInvitacion() {
+            var pantalla = document.getElementById("pantallaBienvenida");
+            window.scrollTo(0, 0);
+            
+            audio.play();
+            isPlaying = true;
+            btnPlay.innerHTML = "||"; 
+            
+            pantalla.style.transform = "translateY(-100vh)"; 
+            pantalla.style.opacity = "0";
+            
+            // Iniciar efectos del interior
+            setTimeout(() => {
+                pantalla.style.display = "none";
+                
+                animarTextoMagico("nombreInterior", nombreDelBebe, 0.2);
+                setInterval(crearParticulaMagica, 800); 
+            }, 1000); 
+        }
+
+        // --- LLUVIA DE HOJITAS Y ABEJAS ---
+        function crearParticulaMagica() {
+            const particula = document.createElement('div');
+            particula.classList.add('particula-magica');
+            
+            const iconos = ['🍂', '🍁', '🐝', '✨', '🍯'];
+            particula.innerText = iconos[Math.floor(Math.random() * iconos.length)];
+            
+            particula.style.left = Math.random() * 100 + 'vw';
+            particula.style.animationDuration = Math.random() * 4 + 6 + 's'; 
+            particula.style.fontSize = Math.random() * 1 + 1.2 + 'rem';
+            
+            document.body.appendChild(particula);
+            
+            setTimeout(() => {
+                particula.remove();
+            }, 10000);
+        }
+
+        // --- 2. CONTROL DE MÚSICA ---
+        function togglePlay() {
+            if (isPlaying) {
+                audio.pause();
+                btnPlay.innerHTML = "▶";
+            } else {
+                audio.play();
+                btnPlay.innerHTML = "||";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // --- 3. CUENTA REGRESIVA ---
+        var countDownDate = new Date("Oct 10, 2026 17:00:00").getTime();
+
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("dias").innerHTML = days < 10 ? "0" + days : days;
+            document.getElementById("horas").innerHTML = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutos").innerHTML = minutes < 10 ? "0" + minutes : minutes;
+            document.getElementById("segundos").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown").innerHTML = "¡El día ha llegado!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
