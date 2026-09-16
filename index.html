@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baby Shower Enzo</title>
     
-    <!-- Agregué la fuente 'Fredoka' para un toque más infantil y tierno -->
     <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Cinzel:wght@600;700&family=Fredoka:wght@600&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -47,9 +46,8 @@
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
         }
 
-        /* Título BABY SHOWER de la Portada (Nueva Letra) */
         .titulo-imponente {
-            font-family: 'Fredoka', sans-serif; /* Cambiado a Fredoka */
+            font-family: 'Fredoka', sans-serif;
             font-size: clamp(3.5rem, 14vw, 5rem); 
             font-weight: 600;
             color: var(--text-dark);
@@ -254,7 +252,7 @@
         .time-box span { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); }
         .time-box p { font-size: 0.6rem; margin: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-accent); }
 
-        /* --- BOTONES --- */
+        /* --- BOTONES ESTÁNDAR --- */
         .btn {
             display: inline-block;
             background-color: var(--bg-color);
@@ -276,7 +274,30 @@
             transform: translateY(-3px);
         }
 
-        /* --- BOTÓN PRIMARIO (DESTACADO PARA WHATSAPP) --- */
+        /* --- BOTÓN YAPE (COLORES DEL BOTÓN PRIMARIO) --- */
+        .btn-yape {
+            display: inline-block;
+            background-color: var(--gold-accent);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 16px 35px;
+            border: 2px solid #ffffff;
+            border-radius: 35px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            box-shadow: 0 6px 15px rgba(194, 161, 83, 0.5);
+            transition: all 0.3s ease;
+        }
+        .btn-yape:hover {
+            background-color: var(--text-dark);
+            color: var(--gold-accent);
+            border-color: var(--gold-accent);
+            transform: scale(1.05);
+        }
+
+        /* --- BOTÓN PRIMARIO (DESTACADO PARA WHATSAPP AL FINAL) --- */
         .btn-primario {
             display: inline-block;
             background-color: var(--gold-accent);
@@ -389,7 +410,16 @@ Sin embargo, si deseas contribuir de otra manera, agradecemos cualquier donativo
 Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalos de referencia.</p>
         <a href="https://onelist.pe/listas/398lsn6rpgxhzhbw/invitado/" target="_blank" class="btn">VER LISTA DE REGALOS</a>
 
-        <!-- SECCIÓN DE CONFIRMACIÓN DE ASISTENCIA REUBICADA AL FINAL -->
+        <!-- NUEVA SECCIÓN DE APORTE VOLUNTARIO YAPE -->
+        <div class="titulo-seccion">Aporte Voluntario</div>
+        <p style="font-weight: 300;">Si nace de tu corazón hacernos un presente de forma libre, el monto que consideres será recibido con muchísimo amor y gratitud para los preparativos de Enzo.</p>
+        <p style="font-size: 1.3rem; font-weight: 700; color: var(--gold-accent); margin: 5px 0;">Yape: +51 977 559 267</p>
+        <p style="font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; color: var(--text-dark);">Anali Estefani Huamani Auccapuri</p>
+        
+        <!-- BOTÓN CON DISEÑO ACTUALIZADO -->
+        <a href="yape.jpeg" target="_blank" class="btn-yape">💛 VER QR DE YAPE</a>
+
+        <!-- SECCIÓN DE CONFIRMACIÓN DE ASISTENCIA -->
         <div class="titulo-seccion" style="font-family: 'Chewy', cursive; font-size: 3rem; text-transform: none; margin-top: 60px;">Confirmar Asistencia</div>
         <img src="whatsapp.png" alt="WhatsApp" class="efecto-flotar" style="width: 60px; margin: 10px auto; display: block;">
         <p style="font-weight: 300;">Nos encantará saber que nos acompañarás, permítenos preparar los detalles confirmando tu asistencia.</p>
