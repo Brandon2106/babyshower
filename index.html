@@ -41,38 +41,66 @@
             flex-direction: column;
             justify-content: space-evenly; 
             align-items: center;
-            padding: 5vh 0;
+            padding: 4vh 0;
             z-index: 9999;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
         }
 
+        .subtitulo-portada {
+            font-family: 'Fredoka', sans-serif;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            font-weight: 600;
+            color: var(--text-dark);
+            letter-spacing: 3px;
+            text-align: center;
+            text-shadow: 2px 2px 5px rgba(255,255,255,0.9);
+            margin-bottom: -5px; 
+            text-transform: uppercase;
+        }
+
         .titulo-imponente {
             font-family: 'Fredoka', sans-serif;
-            font-size: clamp(3.5rem, 14vw, 5rem); 
+            font-size: clamp(2.8rem, 11vw, 4.5rem); 
             font-weight: 600;
             color: var(--text-dark);
             line-height: 1.1;
             text-align: center;
-            text-shadow: 2px 2px 5px rgba(255,255,255,0.8); 
+            text-shadow: 2px 2px 5px rgba(255,255,255,0.9); 
             margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
         .nombre-portada {
             font-family: 'Chewy', cursive;
-            font-size: clamp(5rem, 20vw, 7rem); 
+            font-size: clamp(5rem, 18vw, 7rem); 
             color: var(--gold-accent); 
             letter-spacing: 3px;
             min-height: 1.2em; 
             text-align: center;
         }
 
+        /* --- ECOGRAFÍA PORTADA (NUEVO DISEÑO RECTANGULAR COMPLETO) --- */
+        .eco-portada {
+            width: 85%;
+            max-width: 280px;
+            height: auto; /* Permite que tome su altura real sin deformarse */
+            object-fit: contain; /* Asegura que la foto completa sea visible */
+            border-radius: 12px; /* Forma rectangular con bordes un poco redondeados */
+            border: 4px solid #ffffff;
+            box-shadow: 0 0 0 2px var(--gold-accent), 0 8px 20px rgba(0,0,0,0.25);
+            animation: flotar 4s infinite alternate ease-in-out;
+            margin: 10px 0 -10px 0;
+            z-index: 5;
+        }
+
         .img-interactiva {
             width: 80%;
-            max-width: 250px; 
+            max-width: 220px; 
             cursor: pointer;
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
             animation: latido-suave 2s infinite ease-in-out;
             transition: transform 0.3s ease;
+            z-index: 6;
         }
 
         .img-interactiva:hover {
@@ -83,7 +111,7 @@
             font-family: 'Cinzel', serif;
             font-size: 0.85rem;
             color: var(--text-dark);
-            background: rgba(253, 251, 245, 0.85); 
+            background: rgba(255, 255, 255, 0.95); 
             padding: 8px 20px;
             border-radius: 20px;
             font-weight: bold;
@@ -102,7 +130,7 @@
             background-size: 300px; 
             animation: movimientoFondo 25s linear infinite; 
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 40px 15px;
             text-align: center;
             position: relative;
             box-shadow: 0 0 20px rgba(0,0,0,0.1);
@@ -114,7 +142,67 @@
             100% { background-position: 300px 300px; } 
         }
 
-        /* --- EFECTO DE ESCRITURA MÁGICA PARA "ENZO" --- */
+        /* --- SUBTÍTULOS ELEGANTES --- */
+        .titulo-seccion {
+            font-family: 'Cinzel', serif;
+            color: var(--text-dark);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 50px auto 20px auto; 
+            display: block; 
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.9);
+        }
+
+        .titulo-seccion::before {
+            content: '✨ ';
+            font-size: 1.1rem;
+        }
+        
+        .titulo-seccion::after {
+            content: ' ✨';
+            font-size: 1.1rem;
+        }
+
+        /* --- CAJAS DE TEXTO BLANCAS (Estilo Invitación) --- */
+        .caja-texto {
+            background-color: rgba(255, 255, 255, 0.96); 
+            padding: 25px 20px;
+            margin: 0 auto 20px auto;
+            width: 95%;
+            border-radius: 20px; 
+            border: 1.5px solid var(--gold-accent);
+            position: relative;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .caja-texto::before {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 1px solid var(--gold-accent);
+            border-radius: 14px;
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .caja-texto p {
+            margin-bottom: 10px;
+            background: none !important;
+            padding: 0 !important;
+        }
+
+        .caja-texto p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* --- EFECTOS MÁGICOS Y ANIMACIONES --- */
         .letra-animada {
             display: inline-block;
             opacity: 0; 
@@ -143,7 +231,6 @@
             }
         }
 
-        /* Lluvia mágica de hojas y abejas */
         .particula-magica {
             position: fixed;
             top: -10vh;
@@ -201,26 +288,13 @@
             50% { opacity: 1; }
         }
 
-        /* --- ELEMENTOS DE TEXTO --- */
-        .titulo-seccion {
-            font-family: 'Cinzel', serif;
-            color: var(--gold-accent);
-            font-size: 1.8rem;
-            margin: 40px 0 20px 0;
-            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
-        }
-
         p {
             font-size: 0.95rem;
             line-height: 1.8;
-            margin-bottom: 15px;
             font-weight: 600;
-            background: rgba(253, 251, 245, 0.7);
-            border-radius: 10px;
-            padding: 5px;
         }
 
-        /* --- ECOGRAFÍA FLOTANTE --- */
+        /* --- ECOGRAFÍA FLOTANTE (INTERIOR) --- */
         .foto-eco {
             width: 100px;
             position: absolute;
@@ -243,40 +317,22 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin: 20px 0;
-            background: rgba(253, 251, 245, 0.9);
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
             padding: 20px 10px;
             border-radius: 20px;
-            border: 1px dashed var(--gold-accent);
+            border: 1.5px solid var(--gold-accent);
+            width: 95%;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.08);
         }
         .time-box span { font-size: 1.8rem; font-weight: 700; color: var(--text-dark); }
         .time-box p { font-size: 0.6rem; margin: 0; text-transform: uppercase; letter-spacing: 1px; color: var(--gold-accent); }
 
-        /* --- BOTONES ESTÁNDAR --- */
-        .btn {
-            display: inline-block;
-            background-color: var(--bg-color);
-            color: var(--text-dark);
-            text-decoration: none;
-            padding: 15px 30px;
-            border: 1px solid var(--gold-accent);
-            border-radius: 30px;
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        .btn:hover {
-            background-color: var(--gold-accent);
-            color: white;
-            transform: translateY(-3px);
-        }
-
-        /* --- BOTÓN YAPE (COLORES DEL BOTÓN PRIMARIO) --- */
-        .btn-yape {
-            display: inline-block;
+        /* --- ESTILOS COMPARTIDOS PARA TODOS LOS BOTONES --- */
+        .btn, .btn-yape, .btn-primario {
+            display: block; 
+            width: fit-content;
+            margin: 15px auto 30px auto;
             background-color: var(--gold-accent);
             color: #ffffff;
             text-decoration: none;
@@ -286,40 +342,20 @@
             font-family: 'Cinzel', serif;
             font-weight: 700;
             font-size: 1.1rem;
-            margin-top: 15px;
             box-shadow: 0 6px 15px rgba(194, 161, 83, 0.5);
             transition: all 0.3s ease;
         }
-        .btn-yape:hover {
+
+        .btn:hover, .btn-yape:hover, .btn-primario:hover {
             background-color: var(--text-dark);
             color: var(--gold-accent);
             border-color: var(--gold-accent);
             transform: scale(1.05);
         }
 
-        /* --- BOTÓN PRIMARIO (DESTACADO PARA WHATSAPP AL FINAL) --- */
+        /* Animación extra exclusiva para el botón de WhatsApp final */
         .btn-primario {
-            display: inline-block;
-            background-color: var(--gold-accent);
-            color: #ffffff;
-            text-decoration: none;
-            padding: 16px 35px;
-            border: 2px solid #ffffff;
-            border-radius: 35px;
-            font-family: 'Cinzel', serif;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-top: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 15px rgba(194, 161, 83, 0.5);
             animation: respirar 3s infinite ease-in-out;
-            transition: all 0.3s ease;
-        }
-        .btn-primario:hover {
-            background-color: var(--text-dark);
-            color: var(--gold-accent);
-            border-color: var(--gold-accent);
-            transform: scale(1.05);
         }
 
         /* --- REPRODUCTOR --- */
@@ -340,12 +376,14 @@
 <body>
 
     <div id="pantallaBienvenida" class="pantalla-bienvenida">
-        <!-- Textos agrupados para aprovechar el espacio en pantalla -->
-        <div>
-            <div class="titulo-imponente">MI<br>BABY<br>SHOWER</div>
+        <div style="display:flex; flex-direction:column; align-items:center;">
+            <div class="subtitulo-portada">TE INVITO A MI</div>
+            <div class="titulo-imponente">BABY SHOWER</div>
             <div class="nombre-portada" id="nombrePortada"></div>
         </div>
         
+        <img src="ecografia.jpeg" alt="Ecografía de Enzo" class="eco-portada">
+
         <img src="carta.png" alt="Abrir Invitación" class="img-interactiva" onclick="abrirInvitacion()">
         
         <div class="texto-click">DALE CLIC A LA IMAGEN PARA ABRIR</div>
@@ -359,21 +397,22 @@
         
         <button class="play-btn" onclick="togglePlay()" id="btnMusica">||</button>
 
-        <!-- Título BABY SHOWER de la página interior (Nueva Letra) -->
-        <h1 style="font-family: 'Fredoka', sans-serif; font-size: 2.5rem; margin-top: 10px;">MI BABY SHOWER</h1>
+        <h1 style="font-family: 'Fredoka', sans-serif; font-size: 2.5rem; margin-top: 10px; color: var(--text-dark);">MI BABY SHOWER</h1>
         
-        <!-- Contenedor del nombre en la página Interior -->
         <div id="nombreInterior" style="font-family: 'Chewy', cursive; font-size: 4rem; color: var(--gold-accent); margin-bottom: 20px; letter-spacing: 3px; min-height: 1.2em;">
-            <!-- Aquí el JS inyectará las letras animadas -->
         </div>
 
         <img src="poo.png" alt="Pooh y Tigger" class="efecto-respirar" style="width: 80%; max-width: 250px; margin: 0 auto 20px auto; display: block;">
 
-        <p>¡Esperamos a Enzo con mucho amor!</p>
-        <p style="font-weight: 300;">Con mucha ilusión te invitamos a celebrar la próxima llegada de Enzo, nos gustaria que estén en la primera fiestita que haremos en su honor para darle la bienvenida al mundo, un pequeño que ya llena nuestros corazones de amor.</p>
+        <div class="caja-texto">
+            <p style="color: var(--gold-accent); font-size: 1.1rem; margin-bottom: 15px;">¡Esperamos a Enzo con mucho amor!</p>
+            <p style="font-weight: 300;">Con mucha ilusión te invitamos a celebrar la próxima llegada de Enzo, nos gustaria que estén en la primera fiestita que haremos en su honor para darle la bienvenida al mundo, un pequeño que ya llena nuestros corazones de amor.</p>
+        </div>
 
-        <div class="titulo-seccion">Mis papis:</div>
-        <p>ANDRES QUISPE VALDEZ<br>&<br>ANALI ESTEFANI HUAMANI AUCCAPURI</p>
+        <div class="titulo-seccion">Mis papis</div>
+        <div class="caja-texto" style="padding: 15px 20px;">
+            <p>ANDRES QUISPE VALDEZ<br>&<br>ANALI ESTEFANI HUAMANI AUCCAPURI</p>
+        </div>
 
         <div style="position: relative; width: 100%; display: flex; justify-content: center;">
             <div class="contenedor-foto-arco">
@@ -382,11 +421,15 @@
             <img src="ecografia.jpeg" alt="Ecografía" class="foto-eco">
         </div>
 
-        <div class="titulo-seccion">Mis padrinos:</div>
-        <p>PAUL SEGURA DELGADO<br>&<br>KEYLA DANITZA MOZO BARRANTES</p>
+        <div class="titulo-seccion">Mis padrinos</div>
+        <div class="caja-texto" style="padding: 15px 20px;">
+            <p>PAUL SEGURA DELGADO<br>&<br>KEYLA DANITZA MOZO BARRANTES</p>
+        </div>
 
-        <div class="titulo-seccion">Acompáñanos el día:</div>
-        <p style="font-size: 1.3rem;">SÁBADO <span style="font-size: 2.5rem; color: var(--gold-accent); margin: 0 10px;">10</span> OCTUBRE<br>2026</p>
+        <div class="titulo-seccion">Acompáñanos el día</div>
+        <div class="caja-texto">
+            <p style="font-size: 1.3rem;">SÁBADO <span style="font-size: 2.5rem; color: var(--gold-accent); margin: 0 10px;">10</span> OCTUBRE<br>2026</p>
+        </div>
 
         <div class="countdown">
             <div class="time-box"><span id="dias">00</span><p>Días</p></div>
@@ -399,35 +442,37 @@
         </div>
 
         <div class="titulo-seccion">Lugar</div>
-        <p>Salón de Eventos Bananos</p>
-        <p>Calle Francisco Sivirichi 205, Urb. Magisterio - Wanchaq, Cusco</p>
-        <p>HORA: 5:00 PM</p>
-        <a href="https://www.google.com/maps?q=-13.5228284,-71.9482981&z=17&hl=es" target="_blank" class="btn">VER UBICACIÓN</a>
+        <div class="caja-texto">
+            <p style="color: var(--gold-accent); font-size: 1.1rem; margin-bottom: 10px;">Salón de Eventos Bananos</p>
+            <p style="font-weight: 300;">Calle Francisco Sivirichi 205, Urb. Magisterio - Wanchaq, Cusco</p>
+            <p style="margin-top: 10px;">HORA: 5:00 PM</p>
+        </div>
+        <a href="https://www.google.com/maps?q=-13.5228284,-71.9482981&z=17&hl=es" target="_blank" class="btn">📍 VER UBICACIÓN</a>
 
-        <div class="titulo-seccion">BABY LIST</div>
-        <p style="font-weight: 300;">Tu presencia en este día tan especial es el mejor regalo.
-Sin embargo, si deseas contribuir de otra manera, agradecemos cualquier donativo que nos permita equipar nuestro hogar para la llegada de Enzo.
-Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalos de referencia.</p>
-        <a href="https://onelist.pe/listas/398lsn6rpgxhzhbw/invitado/" target="_blank" class="btn">VER LISTA DE REGALOS</a>
+        <div class="titulo-seccion">Baby List</div>
+        <div class="caja-texto">
+            <p style="font-weight: 300;">Tu presencia en este día tan especial es el mejor regalo. Sin embargo, si deseas contribuir de otra manera, agradecemos cualquier donativo que nos permita equipar nuestro hogar para la llegada de Enzo. Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalos de referencia.</p>
+        </div>
+        <a href="https://onelist.pe/listas/398lsn6rpgxhzhbw/invitado/" target="_blank" class="btn">🎁 VER LISTA DE REGALOS</a>
 
-        <!-- NUEVA SECCIÓN DE APORTE VOLUNTARIO YAPE -->
         <div class="titulo-seccion">Aporte Voluntario</div>
-        <p style="font-weight: 300;">Si nace de tu corazón hacernos un presente de forma libre, el monto que consideres será recibido con muchísimo amor y gratitud para los preparativos de Enzo.</p>
-        <p style="font-size: 1.3rem; font-weight: 700; color: var(--gold-accent); margin: 5px 0;">Yape: +51 977 559 267</p>
-        <p style="font-size: 0.75rem; font-weight: 600; margin-bottom: 15px; color: var(--text-dark);">Anali Estefani Huamani Auccapuri</p>
+        <div class="caja-texto">
+            <p style="font-weight: 300;">Si nace de tu corazón hacernos un presente de forma libre, el monto que consideres será recibido con muchísimo amor y gratitud para los preparativos de Enzo.</p>
+            <p style="font-size: 1.3rem; font-weight: 700; color: var(--gold-accent); margin: 15px 0 5px 0;">Yape: +51 977 559 267</p>
+            <p style="font-size: 0.85rem; font-weight: 600; color: var(--text-dark);">Anali Estefani Huamani Auccapuri</p>
+        </div>
         
-        <!-- BOTÓN CON DISEÑO ACTUALIZADO -->
         <a href="yape.jpeg" target="_blank" class="btn-yape">💛 VER QR DE YAPE</a>
 
-        <!-- SECCIÓN DE CONFIRMACIÓN DE ASISTENCIA -->
-        <div class="titulo-seccion" style="font-family: 'Chewy', cursive; font-size: 3rem; text-transform: none; margin-top: 60px;">Confirmar Asistencia</div>
+        <div class="titulo-seccion" style="font-family: 'Chewy', cursive; font-size: 3rem; text-transform: none;">Confirmar Asistencia</div>
         <img src="whatsapp.png" alt="WhatsApp" class="efecto-flotar" style="width: 60px; margin: 10px auto; display: block;">
-        <p style="font-weight: 300;">Nos encantará saber que nos acompañarás, permítenos preparar los detalles confirmando tu asistencia.</p>
         
-        <!-- ÚNICO BOTÓN PRIMARIO DE CONFIRMACIÓN -->
+        <div class="caja-texto" style="margin-top: 20px;">
+            <p style="font-weight: 300;">Nos encantará saber que nos acompañarás, permítenos preparar los detalles confirmando tu asistencia.</p>
+        </div>
+        
         <a href="https://wa.me/51977559267?text=Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Enzo.%20%C2%A1Qu%C3%A9%20emoci%C3%B3n%20acompa%C3%B1arlos!" target="_blank" class="btn-primario">✅ CONFIRMAR ASISTENCIA</a>
 
-        <!-- CIERRE DE LA INVITACIÓN -->
         <div style="font-family: 'Chewy', cursive; font-size: 3.5rem; margin-top: 30px; margin-bottom: 40px; color: var(--gold-accent);">¡Te esperamos!</div>
 
     </div>
@@ -438,7 +483,6 @@ Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalo
         var btnPlay = document.getElementById("btnMusica");
         const nombreDelBebe = "ENZO";
 
-        // --- FUNCIÓN PARA EL EFECTO MÁGICO DE LETRAS ---
         function animarTextoMagico(idElemento, texto, delayExtra = 0) {
             const contenedor = document.getElementById(idElemento);
             contenedor.innerHTML = ""; 
@@ -452,12 +496,10 @@ Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalo
             }
         }
 
-        // Ejecutar en la portada apenas carga la página
         window.onload = function() {
             animarTextoMagico("nombrePortada", nombreDelBebe, 0.3);
         };
 
-        // --- 1. ABRIR INVITACIÓN ---
         function abrirInvitacion() {
             var pantalla = document.getElementById("pantallaBienvenida");
             window.scrollTo(0, 0);
@@ -469,16 +511,13 @@ Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalo
             pantalla.style.transform = "translateY(-100vh)"; 
             pantalla.style.opacity = "0";
             
-            // Iniciar efectos del interior
             setTimeout(() => {
                 pantalla.style.display = "none";
-                
                 animarTextoMagico("nombreInterior", nombreDelBebe, 0.2);
                 setInterval(crearParticulaMagica, 800); 
             }, 1000); 
         }
 
-        // --- LLUVIA DE HOJITAS Y ABEJAS ---
         function crearParticulaMagica() {
             const particula = document.createElement('div');
             particula.classList.add('particula-magica');
@@ -497,7 +536,6 @@ Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalo
             }, 10000);
         }
 
-        // --- 2. CONTROL DE MÚSICA ---
         function togglePlay() {
             if (isPlaying) {
                 audio.pause();
@@ -509,7 +547,6 @@ Y si aún no sabes qué regalarnos, también hemos preparado una lista de regalo
             isPlaying = !isPlaying;
         }
 
-        // --- 3. CUENTA REGRESIVA ---
         var countDownDate = new Date("Oct 10, 2026 17:00:00").getTime();
 
         var x = setInterval(function() {
