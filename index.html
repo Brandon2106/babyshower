@@ -36,12 +36,13 @@
             background-image: url('fondo.jpg'); 
             background-color: var(--bg-color);
             background-size: cover;
-            background-position: center;
+            background-position: center top; /* Mantiene las hojas ancladas arriba */
             display: flex;
             flex-direction: column;
-            justify-content: space-evenly; 
+            justify-content: center; /* Mantiene todo centrado en la zona azul */
             align-items: center;
-            padding: 4vh 0;
+            padding-top: 15vh; /* Empuja el contenido debajo de las hojas verdes */
+            gap: 2.5vh; /* Separación uniforme entre elementos */
             z-index: 9999;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
         }
@@ -79,17 +80,16 @@
             text-align: center;
         }
 
-        /* --- ECOGRAFÍA PORTADA (NUEVO DISEÑO RECTANGULAR COMPLETO) --- */
+        /* --- ECOGRAFÍA PORTADA --- */
         .eco-portada {
             width: 85%;
             max-width: 280px;
-            height: auto; /* Permite que tome su altura real sin deformarse */
-            object-fit: contain; /* Asegura que la foto completa sea visible */
-            border-radius: 12px; /* Forma rectangular con bordes un poco redondeados */
+            height: auto; 
+            object-fit: contain; 
+            border-radius: 12px; 
             border: 4px solid #ffffff;
             box-shadow: 0 0 0 2px var(--gold-accent), 0 8px 20px rgba(0,0,0,0.25);
             animation: flotar 4s infinite alternate ease-in-out;
-            margin: 10px 0 -10px 0;
             z-index: 5;
         }
 
@@ -142,6 +142,16 @@
             100% { background-position: 300px 300px; } 
         }
 
+        /* --- CLASE PARA INTEGRAR LAS NUEVAS IMÁGENES (SIN TRANSPARENCIA) --- */
+        .img-tema {
+            width: 95%;
+            max-width: 420px;
+            margin: 15px auto;
+            display: block;
+            border-radius: 15px; /* Bordes redondeados para que se vea estético */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Sombra suave para darle estilo de tarjeta */
+        }
+
         /* --- SUBTÍTULOS ELEGANTES --- */
         .titulo-seccion {
             font-family: 'Cinzel', serif;
@@ -156,15 +166,8 @@
             text-shadow: 1px 1px 2px rgba(255,255,255,0.9);
         }
 
-        .titulo-seccion::before {
-            content: '✨ ';
-            font-size: 1.1rem;
-        }
-        
-        .titulo-seccion::after {
-            content: ' ✨';
-            font-size: 1.1rem;
-        }
+        .titulo-seccion::before { content: '✨ '; font-size: 1.1rem; }
+        .titulo-seccion::after { content: ' ✨'; font-size: 1.1rem; }
 
         /* --- CAJAS DE TEXTO BLANCAS (Estilo Invitación) --- */
         .caja-texto {
@@ -368,7 +371,7 @@
             height: 50px;
             font-size: 1.2rem;
             cursor: pointer;
-            margin: 20px auto;
+            margin: 20px auto 10px auto;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
     </style>
@@ -397,12 +400,8 @@
         
         <button class="play-btn" onclick="togglePlay()" id="btnMusica">||</button>
 
-        <h1 style="font-family: 'Fredoka', sans-serif; font-size: 2.5rem; margin-top: 10px; color: var(--text-dark);">MI BABY SHOWER</h1>
-        
-        <div id="nombreInterior" style="font-family: 'Chewy', cursive; font-size: 4rem; color: var(--gold-accent); margin-bottom: 20px; letter-spacing: 3px; min-height: 1.2em;">
-        </div>
-
-        <img src="poo.png" alt="Pooh y Tigger" class="efecto-respirar" style="width: 80%; max-width: 250px; margin: 0 auto 20px auto; display: block;">
+        <!-- IMAGEN 2: LETRERO ENZO -->
+        <img src="portada.png" alt="Te invito a mi Baby Shower Enzo" class="img-tema">
 
         <div class="caja-texto">
             <p style="color: var(--gold-accent); font-size: 1.1rem; margin-bottom: 15px;">¡Esperamos a Enzo con mucho amor!</p>
@@ -473,7 +472,10 @@
         
         <a href="https://wa.me/51977559267?text=Hola!%20Confirmo%20mi%20asistencia%20al%20Baby%20Shower%20de%20Enzo.%20%C2%A1Qu%C3%A9%20emoci%C3%B3n%20acompa%C3%B1arlos!" target="_blank" class="btn-primario">✅ CONFIRMAR ASISTENCIA</a>
 
-        <div style="font-family: 'Chewy', cursive; font-size: 3.5rem; margin-top: 30px; margin-bottom: 40px; color: var(--gold-accent);">¡Te esperamos!</div>
+        <div style="font-family: 'Chewy', cursive; font-size: 3.5rem; margin-top: 30px; margin-bottom: 10px; color: var(--gold-accent);">¡Te esperamos!</div>
+
+        <!-- IMAGEN 3: POOH Y TIGGER ABRAZADOS -->
+        <img src="ositotigre.png" alt="Pooh y Tigger" class="img-tema efecto-flotar" style="max-width: 250px;">
 
     </div>
 
@@ -513,7 +515,6 @@
             
             setTimeout(() => {
                 pantalla.style.display = "none";
-                animarTextoMagico("nombreInterior", nombreDelBebe, 0.2);
                 setInterval(crearParticulaMagica, 800); 
             }, 1000); 
         }
