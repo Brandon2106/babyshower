@@ -26,42 +26,52 @@
             overflow-x: hidden;
         }
 
-        /* --- PANTALLA DE BIENVENIDA (PORTADA) --- */
+        /* --- PANTALLA DE BIENVENIDA (PORTADA OPTIMIZADA) --- */
         .pantalla-bienvenida {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100vh;
-            background-image: url('fondo.jpg'); 
+            background-image: url('nuevo-fondo.jpeg'); /* Nombre de tu fondo */
             background-color: var(--bg-color);
             background-size: cover;
-            background-position: center top; /* Mantiene las hojas ancladas arriba */
+            background-position: center;
             display: flex;
-            flex-direction: column;
-            justify-content: center; /* Mantiene todo centrado en la zona azul */
-            align-items: center;
-            padding-top: 15vh; /* Empuja el contenido debajo de las hojas verdes */
-            gap: 2.5vh; /* Separación uniforme entre elementos */
+            justify-content: center; /* Centra la caja contenedora verticalmente */
+            align-items: center;     /* Centra horizontalmente */
             z-index: 9999;
             transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1s ease;
         }
 
+        /* Nueva caja invisible para forzar todo al centro y no pisar los bordes */
+        .contenido-centrado {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            /* Estos márgenes aseguran que no toque las hojas arriba ni el pasto abajo */
+            margin-top: 12vh; 
+            margin-bottom: 12vh;
+            padding: 0 15px;
+        }
+
         .subtitulo-portada {
             font-family: 'Fredoka', sans-serif;
-            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            font-size: clamp(1rem, 4.5vw, 1.5rem); /* Ligeramente más pequeño para optimizar espacio */
             font-weight: 600;
             color: var(--text-dark);
             letter-spacing: 3px;
             text-align: center;
             text-shadow: 2px 2px 5px rgba(255,255,255,0.9);
-            margin-bottom: -5px; 
+            margin-bottom: -2px; 
             text-transform: uppercase;
         }
 
         .titulo-imponente {
             font-family: 'Fredoka', sans-serif;
-            font-size: clamp(2.8rem, 11vw, 4.5rem); 
+            font-size: clamp(2.4rem, 10vw, 4rem); 
             font-weight: 600;
             color: var(--text-dark);
             line-height: 1.1;
@@ -73,43 +83,32 @@
 
         .nombre-portada {
             font-family: 'Chewy', cursive;
-            font-size: clamp(5rem, 18vw, 7rem); 
+            font-size: clamp(4rem, 16vw, 6.5rem); 
             color: var(--gold-accent); 
             letter-spacing: 3px;
-            min-height: 1.2em; 
+            min-height: 1.1em; 
             text-align: center;
-        }
-
-        /* --- ECOGRAFÍA PORTADA --- */
-        .eco-portada {
-            width: 85%;
-            max-width: 280px;
-            height: auto; 
-            object-fit: contain; 
-            border-radius: 12px; 
-            border: 4px solid #ffffff;
-            box-shadow: 0 0 0 2px var(--gold-accent), 0 8px 20px rgba(0,0,0,0.25);
-            animation: flotar 4s infinite alternate ease-in-out;
-            z-index: 5;
+            text-shadow: 2px 2px 5px rgba(255,255,255,0.9);
+            line-height: 1;
         }
 
         .img-interactiva {
-            width: 80%;
-            max-width: 220px; 
+            width: 70%;
+            max-width: 190px; /* Tamaño ajustado para que no estorbe abajo */
+            margin: 15px 0; /* Separación de los textos */
             cursor: pointer;
             filter: drop-shadow(0 10px 15px rgba(0,0,0,0.3));
             animation: latido-suave 2s infinite ease-in-out;
             transition: transform 0.3s ease;
-            z-index: 6;
         }
 
         .img-interactiva:hover {
-            transform: scale(1.1);
+            transform: scale(1.05);
         }
 
         .texto-click {
             font-family: 'Cinzel', serif;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             color: var(--text-dark);
             background: rgba(255, 255, 255, 0.95); 
             padding: 8px 20px;
@@ -118,6 +117,7 @@
             letter-spacing: 1px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             animation: aparecer-desaparecer 2s infinite;
+            text-align: center;
         }
 
         /* --- CONTENEDOR PRINCIPAL Y FONDO ANIMADO --- */
@@ -142,14 +142,14 @@
             100% { background-position: 300px 300px; } 
         }
 
-        /* --- CLASE PARA INTEGRAR LAS NUEVAS IMÁGENES (SIN TRANSPARENCIA) --- */
+        /* --- IMÁGENES AGREGADAS --- */
         .img-tema {
             width: 95%;
             max-width: 420px;
             margin: 15px auto;
             display: block;
-            border-radius: 15px; /* Bordes redondeados para que se vea estético */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Sombra suave para darle estilo de tarjeta */
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); 
         }
 
         /* --- SUBTÍTULOS ELEGANTES --- */
@@ -356,7 +356,6 @@
             transform: scale(1.05);
         }
 
-        /* Animación extra exclusiva para el botón de WhatsApp final */
         .btn-primario {
             animation: respirar 3s infinite ease-in-out;
         }
@@ -378,18 +377,18 @@
 </head>
 <body>
 
+    <!-- PORTADA CENTRADA Y OPTIMIZADA -->
     <div id="pantallaBienvenida" class="pantalla-bienvenida">
-        <div style="display:flex; flex-direction:column; align-items:center;">
+        <!-- Caja central para evitar desbordes -->
+        <div class="contenido-centrado">
             <div class="subtitulo-portada">TE INVITO A MI</div>
             <div class="titulo-imponente">BABY SHOWER</div>
             <div class="nombre-portada" id="nombrePortada"></div>
+            
+            <img src="carta.png" alt="Abrir Invitación" class="img-interactiva" onclick="abrirInvitacion()">
+            
+            <div class="texto-click">DALE CLIC AL SOBRE PARA ABRIR</div>
         </div>
-        
-        <img src="ecografia.jpeg" alt="Ecografía de Enzo" class="eco-portada">
-
-        <img src="carta.png" alt="Abrir Invitación" class="img-interactiva" onclick="abrirInvitacion()">
-        
-        <div class="texto-click">DALE CLIC A LA IMAGEN PARA ABRIR</div>
     </div>
 
     <div class="container">
@@ -400,8 +399,11 @@
         
         <button class="play-btn" onclick="togglePlay()" id="btnMusica">||</button>
 
+        <!-- IMAGEN 1: GLOBOS Y BABY -->
+        <img src="globos.jpg" alt="Baby con globos" class="img-tema efecto-respirar">
+
         <!-- IMAGEN 2: LETRERO ENZO -->
-        <img src="portada.png" alt="Te invito a mi Baby Shower Enzo" class="img-tema">
+        <img src="portada.jpeg" alt="Te invito a mi Baby Shower Enzo" class="img-tema">
 
         <div class="caja-texto">
             <p style="color: var(--gold-accent); font-size: 1.1rem; margin-bottom: 15px;">¡Esperamos a Enzo con mucho amor!</p>
@@ -475,7 +477,7 @@
         <div style="font-family: 'Chewy', cursive; font-size: 3.5rem; margin-top: 30px; margin-bottom: 10px; color: var(--gold-accent);">¡Te esperamos!</div>
 
         <!-- IMAGEN 3: POOH Y TIGGER ABRAZADOS -->
-        <img src="ositotigre.png" alt="Pooh y Tigger" class="img-tema efecto-flotar" style="max-width: 250px;">
+        <img src="ositotigre.jpeg" alt="Pooh y Tigger" class="img-tema efecto-flotar" style="max-width: 250px;">
 
     </div>
 
